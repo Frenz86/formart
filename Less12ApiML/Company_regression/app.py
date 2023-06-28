@@ -17,7 +17,7 @@ def main():
         st.write('"{}"'.format(link))
         response = requests.get(link)
         result =response.json()
-        st.success(f"The result is: {result}")
+        st.success(f"The result is: {result['prediction']}")
 
     ############## POST REQUEST #################
     if st.button("Predict with POST"):
@@ -31,7 +31,7 @@ def main():
                                                    })
                                 )
         result =response.json()
-        st.success(f"The result is: {result}")
+        st.success(f"The result is: {result['prediction']}")
 
 if __name__ == '__main__':
     main()

@@ -1,6 +1,5 @@
 from fastapi import FastAPI,Depends,HTTPException,status
 from pydantic import BaseModel
-from starlette.responses import JSONResponse
 import joblib
 import uvicorn
 
@@ -12,6 +11,7 @@ class CompanyData(BaseModel):
     radio: float =23
     newspaper: float =30
 
+## blocco per la cache del mio modello
 @app.on_event("startup")
 def startup_event():
     "modello *.pkl di ML"
@@ -34,7 +34,7 @@ async def predictget(data:CompanyData=Depends()):
         X = [[data.tv, data.radio, data.newspaper]]
         y_pred = model.predict(X)[0]
         res = round(y_pred,2)
-        return res
+        return {'prediction':res}
     except:
         raise HTTPException(status_code=404, detail="error")
 
@@ -45,7 +45,7 @@ async def predictpost(data:CompanyData):
         X = [[data.tv, data.radio, data.newspaper]]
         y_pred = model.predict(X)[0]
         res = round(y_pred,2)
-        return res
+        return {'prediction':res}
     except:
         raise HTTPException(status_code=404, detail="error")
 
