@@ -1,0 +1,8 @@
+La funzione "fetch" è un metodo di JavaScript che consente di effettuare richieste HTTP. Tuttavia, fetch restituisce una 
+promessa (Promise), che rappresenta un'operazione asincrona che potrebbe avere successo o fallire in un momento successivo.
+Utilizzando la parola chiave "await" prima della chiamata a "fetch", stai dicendo al programma di attendere che la promessa 
+restituita dalla chiamata API venga risolta prima di procedere con l'esecuzione del codice successivo.
+
+In pratica, quando si utilizza "await fetch(url);", il programma sospende l'esecuzione fino a quando la richiesta 
+HTTP viene completata e la promessa viene risolta. Successivamente, il valore restituito dalla promessa può essere utilizzato 
+per eseguire ulteriori operazioni, ad esempio elaborare i dati ricevuti dalla risposta dell'API.
