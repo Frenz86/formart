@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Iris Machine Learning APP</title>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  </head>
+<body>
+
+<div class="container">
+    <br>
+    <br>
+    <h2>Il mio primo Progetto di Machine learning</h2>
+    <br>
+    <br>
+    <form method="post" action="/predict/">
+        <div class="form-group">
+            <label for="sepal_length">Sepal Length:</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="sepal_length" name="sepal_len" required>
+        </div>
+        <div class="form-group">
+            <label for="sepal_width">Sepal Width:</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="sepal_width" name="sepal_wid" required>
+        </div>
+        <div class="form-group">
+            <label for="petal_length">Petal Length:</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="petal_length" name="petal_len" required>
+        </div>
+        <div class="form-group">
+            <label for="petal_width">Petal Width:</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" id="petal_width" name="petal_wid" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Predizione</button>
+        
+    </form>
+    {% if prediction %}
+        <hr>
+        <h3>Prediction:</h3>
+        <p>Claase: {{prediction.target}} - La classe di Iris predetta è la:  {{prediction.target_names[prediction.target]}}</p>
+    {% endif %}
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
