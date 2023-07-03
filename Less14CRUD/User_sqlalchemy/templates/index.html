@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <a href="addnew/" class="btn btn-primary">Add New</a>
+        <br><br>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th width="200">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rs in users %}
+                    <tr>
+                        <td>{{ rs.id }}</td>
+                        <td>{{ rs.name }}</td>
+                        <td>{{ rs.position }}</td>
+                        <td>{{ rs.office }}</td>
+                        <td>
+                            <a href="edit/{{ rs.id }}" class="btn btn-success">Edit</a> | <a href="delete/{{ rs.id }}" class="btn btn-danger">Delete</a>  
+                        </td>
+                    </tr>
+                {% endfor %}    
+            </tbody>
+        </table>
+    </div>
+</div>
+ 
+{% endblock content %}

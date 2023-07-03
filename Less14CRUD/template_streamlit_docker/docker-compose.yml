@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  streamlit:
+    build: .
+    hostname: streamlithost
+    restart: always
+    container_name: teststreamlit
+    ports:
+      - 8501:8501
+    env_file:
+      - .env

@@ -1,0 +1,42 @@
+#sudo docker volume create --name postgres_volume_local -d local
+#sudo docker-compose -p projectDB up
+version: '3.8'
+
+services:
+# DB PostGres
+  db:
+    container_name: postgres
+    image: postgres:13
+    restart: unless-stopped #always
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=my_database
+    volumes:
+      - postgres_volume_local:/var/lib/postgresql/data"
+    ports:
+      - "5432:5432"
+    networks:
+      - dbpostegres
+
+# DBMS PGADMIN   
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: unless-stopped #always
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - "8080:80"
+    networks:
+      - dbpostegres
+
+#Create internal link network for Containers
+networks:
+  dbpostegres:
+
+#Create Volumes for persistent Storage
+volumes:
+  postgres_volume_local:
+    external: true # se esistente lo carichiamo (example volume manually using `docker volume create --name=postgres_volume_local` )

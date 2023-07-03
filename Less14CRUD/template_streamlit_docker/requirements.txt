@@ -1,0 +1,4 @@
+pandas==1.5
+streamlit
+xlsxwriter
+openpyxl
