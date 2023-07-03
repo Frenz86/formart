@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  streamlit:
+    restart: unless-stopped
+    build:
+      dockerfile: ./Dockerfile
+      context: ./
+    container_name: myteststreamlit
+    ports:
+      - '8501:8501'
+    volumes:
+      - './dischi:/app/data'
+    environment:
+      - USER_ID=1000

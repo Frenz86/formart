@@ -7,5 +7,5 @@ services:
     container_name: teststreamlit
     ports:
       - 8501:8501
-    env_file:
-      - .env
+    # env_file:
+    #   - .env
